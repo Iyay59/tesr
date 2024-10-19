@@ -1,0 +1,27 @@
+{
+  "name": "movie",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "fullstack": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "backend": "nodemon backend/index.js",
+    "frontend": "cd frontend && npm run dev"
+  },
+  "keywords": [],
+  "author": "Iyay",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "concurrently": "^9.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.7"
+  }
+}
