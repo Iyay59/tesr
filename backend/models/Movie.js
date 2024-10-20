@@ -1,64 +1,35 @@
 import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema;
 
-const reviwSchema = mongoose.Schema(
+const reviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
-    user: {
+    user: [{
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
-    },
+    }],
   },
   { timestamps: true }
 );
 
-const MovieSchema = new mongoose.Schema(
+const movieSchema = new mongoose.Schema(
   {
-    name: {
-      tye: String,
-      required: true,
-    },
-
-    image: {
-      type: String,
-      required: true,
-    },
-
-    details: {
-      type: String,
-      required: true,
-    },
-
-    genre: {
-      type: ObjectId,
-      ref: " Genre",
-      required: true,
-    },
-
-    type: {
-      type: ObjectId,
-      ref: "Type",
-      required: true,
-    },
-
-    year: {
-      type: Number,
-      required: true,
-    },
-
-    Episode: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Episode",
-    },
-    reviws: [reviwSchema],
+    name: { type: String, required: true },
+    image: { type: String },
+    year: { type: Number, required: true },
+    genre: [{ type: ObjectId, ref: "Genre", required: true }],
+    typee: { type: ObjectId, ref: "Type", required: true },
+    detail: { type: String, required: true },
+    cast: [{ type: String }],
+    reviews: [reviewSchema],
     numReviews: { type: Number, required: true, default: 0 },
     createdAt: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );
 
-const Movie = mongoose.model("Movie", MovieSchema);
+const Movie = mongoose.model("Movie", movieSchema);
 export default Movie;

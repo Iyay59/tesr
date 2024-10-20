@@ -6,6 +6,8 @@ import connectDb from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import genreRoutes from "./routes/genreRoutes.js";
 import typeRoutes from "./routes/typeRoutes.js"
+import movieRoutes from "./routes/movieRoutes.js"
+import episodeRoutes from "./routes/episodeRoutes.js"
 
 dotenv.config();
 connectDb()
@@ -22,6 +24,7 @@ const PORT = process.env.PORT || 3000
 App.use("/api/v1/users", userRoutes);
 App.use("/api/v1/genre", genreRoutes)
 App.use("/api/v1/type", typeRoutes)
-
+App.use("/api/v1/movies", movieRoutes)
+App.use("/api/v1/episode", episodeRoutes)
 
 App.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
